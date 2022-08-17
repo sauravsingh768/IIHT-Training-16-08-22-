@@ -1,5 +1,8 @@
 package com.emp.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +18,18 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		Employee savedEmployee= employeeRepository.save(employee);
 		return (int) savedEmployee.getId();
 }
+	@Override
+	public List<Employee> getAllEmployees() {
+		return employeeRepository.findAll();
+	}
+	@Override
+	public Optional<Employee> getEmployee(Integer id) {
+		return employeeRepository.findById(id);
+	}
+	@Override
+	public void deleteEmployee(Integer id) {
+		employeeRepository.deleteById(id);
+		
+	}
 
 }
